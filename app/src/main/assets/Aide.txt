@@ -1,0 +1,26 @@
+Bienvenue sur l'application mobile de gestion
+de tournoi GTApp
+
+
+Cet onglet est fait pour vous expliquer
+le fonctionnement de l'application.
+
+GTApp permet de consulter, en temps réel, les
+informations misent à jour par les responsables
+du tournois a l'aide de l'application de gestion de
+tournois sur ordinateur.
+
+Il faut tout d'abord avoir une conexion à internet
+pour afficher les informations contenues dans
+l'application GTApp.
+
+Ensuite, il est possible de toucher les différents
+boutons afin d'afficher les informations.
+
+Il est également possible d'utiliser le support dans
+deux sens : en portrait ou en paysage.
+
+
+L'équipe des Gladiateurs du Web vous remercie
+d'utiliser leur application mobile et vous
+souhaite une bonne navigation et un bon tournois.
