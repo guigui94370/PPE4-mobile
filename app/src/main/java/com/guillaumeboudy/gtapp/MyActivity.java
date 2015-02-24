@@ -1,6 +1,9 @@
 package com.guillaumeboudy.gtapp;
 
 import android.app.Activity;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -37,12 +40,12 @@ public class MyActivity extends Activity {
     Button btnPoules;
     Button btnElim;
     String chaine = "";
-    //String tableauChaine[];
     String ListeDesEquipes = "http://www.guillaumeboudy.com/GestionTournoi/ListeDesEquipes.txt";
     String ListeDesEquipesSelectionnees = "http://www.guillaumeboudy.com/GestionTournoi/ListeDesEquipesSelectionnees.txt";
     String ListeDesPoules = "http://www.guillaumeboudy.com/GestionTournoi/ListeDesPoules.txt";
     String ListeDesEliminations = "http://www.guillaumeboudy.com/GestionTournoi/ListeDesEliminations.txt";
-
+    String Aide = "http://www.guillaumeboudy.com/GestionTournoi/Aide.txt";
+    String AideLocal = "Aide.txt";
 
     URL url = null;
 
@@ -113,7 +116,31 @@ public class MyActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.aide) {
-            texte.setText("Aide");
+            ConnectivityManager connMgr = (ConnectivityManager)
+                    getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+            if (networkInfo != null && networkInfo.isConnected()) {
+                new DownloadTxt().execute(Aide);
+            }else {
+                try{
+                    //File f = new File(fichier);
+                    //InputStream ips = new FileInputStream(f);
+                    InputStream stream = getAssets().open(AideLocal);
+                    InputStreamReader ipsr = new InputStreamReader(stream);
+                    BufferedReader br = new BufferedReader(ipsr);
+                    String ligne;
+                    while ((ligne = br.readLine())!=null){
+                        //System.out.println(ligne);
+                        chaine+=ligne+"\n";
+                    }
+                    br.close();
+                }
+                catch (Exception e){
+                    System.out.println(e.toString());
+                }
+                texte.setText(chaine);
+        }
+            chaine = "";
             return true;
         }
         return super.onOptionsItemSelected(item);
