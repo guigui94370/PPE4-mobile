@@ -24,13 +24,6 @@ import java.net.URL;
 import java.net.UnknownHostException;
 
 
-//assetfile descriptor
-//getassets().openFd(filename);
-
-
-//http://www.guillaumeboudy.com/GestionTournoi/
-
-
 public class MyActivity extends Activity {
 
 
